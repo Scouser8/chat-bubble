@@ -1,8 +1,22 @@
-import { Box } from "@mui/material";
+import { Avatar, Box } from "@mui/material";
 import chatBubbleStyles from "../../styles/chatBubble.styles";
 
-const ChatBubble = () => {
-  return <Box sx={chatBubbleStyles}>ChatBubble</Box>;
+type Props = {
+  toggleIsChatOpen: () => void;
+};
+
+const ChatBubble = (props: Props) => {
+  const { toggleIsChatOpen } = props;
+
+  return (
+    <Box sx={chatBubbleStyles}>
+      <Avatar
+        src="Naseej-Logo.png"
+        sx={{ cursor: "pointer" }}
+        onClick={toggleIsChatOpen}
+      />
+    </Box>
+  );
 };
 
 export default ChatBubble;
