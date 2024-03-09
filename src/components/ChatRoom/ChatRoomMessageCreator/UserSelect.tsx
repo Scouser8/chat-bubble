@@ -16,15 +16,15 @@ const UserSelect = () => {
     setSelectedUser(event.target.value as string);
   };
   return (
-    <FormControl className="selectUserInput">
+    <FormControl variant="standard" sx={{ minWidth: 120 }}>
       <InputLabel id="select-chat-user-label">Select user</InputLabel>
       <Select
         labelId="select-chat-user-label"
         value={selectedUser}
         onChange={handleSelectUser}
         label="Select user"
-        sx={{ width: 150, height: "100%" }}
         autoWidth
+        size="small"
       >
         {USERS.map(({ username }) => (
           <MenuItem key={username} value={username}>
