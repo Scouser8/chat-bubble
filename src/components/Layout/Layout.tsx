@@ -13,7 +13,7 @@ export default function Layout(props: Props) {
   return (
     <>
       <Header />
-      <Box component="main" style={{ height: "90vh" }}>
+      <Box component="main" style={{ height: "80vh" }}>
         {children}
       </Box>
       <Footer />
