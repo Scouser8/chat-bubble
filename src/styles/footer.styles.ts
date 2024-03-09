@@ -11,10 +11,7 @@ const footerStyles = (theme: muiTheme) => ({
   height: "30px",
   py: 0.5,
   mt: "auto",
-  backgroundColor:
-    theme?.palette?.mode === "light"
-      ? theme?.palette?.grey[200]
-      : theme?.palette?.grey[800],
+  backgroundColor: theme?.palette?.grey[200],
 });
 
 export default footerStyles;
