@@ -8,10 +8,11 @@ const headerStyles = {
   top: 0,
   zIndex: 99,
   display: "flex",
-  justifyContent: "center",
+  justifyContent: "space-between",
   alignItems: "center",
   gap: 1,
   "& h5": { fontFamily: "monospace" },
+  ".title": { display: "flex", alignItems: "center", gap: 2 },
 };
 
 export default headerStyles;
