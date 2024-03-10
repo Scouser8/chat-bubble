@@ -16,7 +16,6 @@ const chatRoomStyles = (theme: muiTheme) => ({
       justifyContent: "space-between",
       alignItems: "center",
     },
-    ".messages": { flex: 1 },
   },
 });
 

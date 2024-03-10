@@ -1,5 +1,4 @@
 import {
-  Box,
   FormControl,
   InputLabel,
   MenuItem,
@@ -7,20 +6,25 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import { USERS } from "../../../constants";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../types";
+import userActions from "../../../store/actions/userActions";
 
 const UserSelect = () => {
-  const [selectedUser, setSelectedUser] = useState("");
+  const selectedUser = useSelector((state: RootState) => state.user);
+  const dispatch = useDispatch();
 
-  const handleSelectUser = (event: SelectChangeEvent) => {
-    setSelectedUser(event.target.value as string);
+  const handleSelectUser = (e: SelectChangeEvent) => {
+    const selectedUsername = e.target.value;
+    const userToSet = USERS.find((user) => user.username === selectedUsername)!;
+    dispatch(userActions.setUser(userToSet));
   };
   return (
     <FormControl variant="standard" sx={{ minWidth: 120 }}>
       <InputLabel id="select-chat-user-label">Select user</InputLabel>
       <Select
         labelId="select-chat-user-label"
-        value={selectedUser}
+        value={selectedUser.username}
         onChange={handleSelectUser}
         label="Select user"
         autoWidth
