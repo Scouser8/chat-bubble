@@ -1,10 +1,12 @@
-export const USERS = [
+import { Message, User } from "../components/types";
+
+export const USERS: User[] = [
   { id: 1, username: "mabdelbaki" },
   { id: 2, username: "hythamsaif" },
   { id: 3, username: "habdulwanes" },
 ];
 
-const MESSAGES = [
+export const MESSAGES: Message[] = [
   { id: 1, type: "text", content: "Good Morning All!", sender: USERS[0] },
   { id: 2, type: "text", content: "How Are you doing?", sender: USERS[0] },
   {
