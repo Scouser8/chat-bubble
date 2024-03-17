@@ -1,6 +1,7 @@
 import { styled } from "@mui/material/styles";
 import { AttachFile } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
+import { ChangeEvent, useRef } from "react";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -14,11 +15,28 @@ const VisuallyHiddenInput = styled("input")({
   width: 1,
 });
 
-const UploadButton = () => {
+type Props = {
+  handleFileSelection: (e: ChangeEvent<HTMLInputElement>) => void;
+  fileTypesToAccept?: string;
+};
+
+const UploadButton = (props: Props) => {
+  const { handleFileSelection, fileTypesToAccept = "*" } = props;
+  const fileInputRef = useRef<HTMLInputElement>();
+
   return (
-    <IconButton component="label" role={undefined} tabIndex={-1}>
+    <IconButton
+      component="label"
+      role={undefined}
+      tabIndex={-1}
+      onClick={() => fileInputRef?.current?.click()}
+    >
       <AttachFile />
-      <VisuallyHiddenInput type="file" />
+      <VisuallyHiddenInput
+        type="file"
+        onChange={handleFileSelection}
+        accept={fileTypesToAccept}
+      />
     </IconButton>
   );
 };

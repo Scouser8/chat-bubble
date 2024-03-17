@@ -3,6 +3,7 @@ import { Message, RootState } from "../../types";
 import { Avatar, Box, Typography } from "@mui/material";
 import { chatMessageStyles } from "../../../styles/chatMessage.styles";
 import { getUserAvatarText } from "../../../utils";
+import { MessageTypes } from "../../../constants";
 
 type Props = {
   message: Message;
@@ -22,7 +23,15 @@ const ChatMessageByType = (props: Props) => {
   return (
     <Box key={messageId} sx={chatMessageStyles(isFromCurrentUser)}>
       {!isFromCurrentUser && <Avatar>{getUserAvatarText(username)}</Avatar>}
-      <Typography className="messageContent">{content}</Typography>
+      {type === MessageTypes.TEXT && (
+        <Typography className="messageContent">{content as string}</Typography>
+      )}
+      {type === MessageTypes.IMAGE && (
+        <img
+          src={URL.createObjectURL(content as File)}
+          style={{ width: 170 }}
+        />
+      )}
     </Box>
   );
 };

@@ -8,10 +8,10 @@ import { Message } from "../components/types";
 
 export const sendNewMessage = createAsyncThunk(
   "messages/add",
-  async (newMessage, thunkAPI) => {
+  async (newMessage: Message, thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
     try {
-      setTimeout(() => newMessage, 500);
+      return newMessage;
     } catch (err: any) {
       return rejectWithValue("Error Msg");
     }
@@ -30,14 +30,10 @@ const messageSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder: ActionReducerMapBuilder<MessageState>) => {
-    builder
-      .addCase(sendNewMessage.fulfilled, (state, action) => {
-        state.messages.push(action.payload as any);
-        state.error = "";
-      })
-      .addCase(sendNewMessage.rejected, (state, action) => {
-        state.error = action.error as any;
-      });
+    builder.addCase(sendNewMessage.fulfilled, (state, action) => {
+      state.messages.push(action.payload as any);
+      state.error = "";
+    });
   },
 });
 

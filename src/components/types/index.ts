@@ -1,16 +1,13 @@
+import { MessageTypes } from "../../constants";
 import store from "../../store";
 
-export type Text = "text";
-export type Image = "img";
-export type Audio = "audio";
-
-export type MessageType = Text | Image | Audio;
+export type MessageType = MessageTypes;
 
 export type User = { id: number | string; username: string };
 
 export type Message = {
-  id: number | string;
-  content: string;
+  id?: number | string;
+  content: string | File;
   type: MessageType;
   sender: User;
 };

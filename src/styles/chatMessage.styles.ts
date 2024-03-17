@@ -1,5 +1,7 @@
 const chatMessagesContainerStyles = {
   flex: 1,
+  height: "60vh",
+  overflowY: "scroll",
   padding: 5,
 };
 
